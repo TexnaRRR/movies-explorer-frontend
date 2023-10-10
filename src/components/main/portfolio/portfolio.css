@@ -26,6 +26,7 @@
   padding-bottom: 19px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .portfolio__list-item:last-child {
@@ -40,6 +41,9 @@
   font-weight: 400;
   line-height: 50px;
   letter-spacing: -1.2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .portfolio__link {
@@ -51,6 +55,7 @@
 
 .portfolio__link-image {
   object-fit: cover;
+  height: 100%;
 }
 
 @media screen and (max-width: 850px) {

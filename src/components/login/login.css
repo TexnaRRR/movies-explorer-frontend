@@ -95,12 +95,11 @@
   .login {
     padding: 232px 0;
   }
-
-  .login-button {
-    bottom: 265px;
+  .login__register {
+    bottom: 70px;
+    position: absolute;
   }
-
-  .login__input-error {;
+  .login__input-error {
     bottom: 326px;
   }
 }
@@ -127,6 +126,7 @@
 
   .login__register {
     gap: 7px;
+    bottom: 30px;
   }
 
   .login__description {
