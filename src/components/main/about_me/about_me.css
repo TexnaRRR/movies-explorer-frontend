@@ -6,6 +6,7 @@
 .about-me__content {
   padding-top: 66px;
   min-height: 368px;
+  gap: 30px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;

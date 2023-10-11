@@ -11,9 +11,9 @@ function Promo() {
             <p className="promo__description">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
           </div>
         </div>
-        <a href="#more-info" className="promo__link">
+        <form action="#more-info" className="promo__link">
           <button className="promo__button-more promo__button-more_text hover-effect button-effect">Узнать больше</button>
-        </a>
+        </form>
       </div>
       <div className="promo__logo"></div>
     </section>
