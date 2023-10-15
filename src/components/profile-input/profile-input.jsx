@@ -9,7 +9,7 @@ function ProfileInput(props) {
              className={`profile-input__input profile-input__input-text ${props.error && "profile-input__input-text_error"}`} 
              name={props.name} id={props.id} value={props.value}
              placeholder={props.placeholder} onChange={props.onChange} 
-             disabled={!props.editFormActive || props.disabled} maxLength="40"/>
+             disabled={!props.editFormActive} maxLength="40"/>
       {props.error && <span className="profile-input__input-error profile-input__input-error-text">{props.error}</span>}
     </div>
   )
