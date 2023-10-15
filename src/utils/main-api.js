@@ -91,8 +91,8 @@ const _checkResponse = (res) => {
   }
   
   //Удаление сохраненных фильмов
-  export const deleteMovies = (movieId) => {
-    return fetch(`${BASE_URL}/movies/${movieId}`, {
+  export const deleteMovies = (id) => {
+    return fetch(`${BASE_URL}/movies/${id}`, {
       method: "DELETE",
       credentials: "include",
       headers: {
