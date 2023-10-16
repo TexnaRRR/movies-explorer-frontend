@@ -5,9 +5,9 @@ import { MOVIE_URL } from "../../utils/constants";
 
 function MoviesCard({ handleSaveMovie, movie, deleteMovie, savedMovies, isLikeMovies, disabled }) {
   const location = useLocation();
- const isMovieLiked = savedMovies.some((savedMovie) => savedMovie.movieId === movie.id);
+  const isMovieLiked = savedMovies.some((savedMovie) => savedMovie.movieId === movie.id);
   //const [isLiked, setIsLiked] = useState(isLikeMovies);
-
+  
   function handleLike() {
     if (!isMovieLiked) {
       return handleSaveMovie(movie);

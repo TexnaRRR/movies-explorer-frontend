@@ -141,19 +141,20 @@ function App() {
         .then(([user, savedMovies]) => {
           setCurrentUser(user);
           setSavedMovies(savedMovies);
-          setLoggedIn(true);
+          // setLoggedIn(true);
         })
         .catch((err) => {
-          if (err === "Ошибка: 401") {
+          if (err.status === "Ошибка : 401") {
             setCurrentUser(null);
+            navigate('/', { replace: true });
             setLoggedIn(false);
             localStorage.clear();
-            return;
+            // return;
           }
           console.log(err)
         });
     }
-  }, [loggedIn]);
+  }, [loggedIn, navigate]);
 
 //Поиск, добавление, удаления фильмов-------------------------------------------------------------------------
   //Сохранение фильма (лайк)
@@ -177,7 +178,7 @@ function App() {
         setSavedMovies((prevSavedMovies) => [...prevSavedMovies, saveMovies]);
       })
       .catch((error) => {
-        if (error === "Ошибка: 401") {
+        if (error.status === "Ошибка: 401") {
           setCurrentUser(null);
           setLoggedIn(false);
           localStorage.clear();
@@ -198,7 +199,10 @@ function App() {
 
     MainApi.deleteMovies(movie._id || movieId._id)
       .then((res) => {
-        setSavedMovies((presSavedMovies) => presSavedMovies.filter((savedMovie) => savedMovie._id !== res._id))
+        setSavedMovies((presSavedMovies) => {
+          const idToDelete = movie._id || movieId._id;
+          return presSavedMovies.filter((savedMovie) => savedMovie._id !== idToDelete)
+        })
       })
       .catch((error) => {
         if (error === "Ошибка: 401") {

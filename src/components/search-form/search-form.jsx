@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./search-form.css";
 import FilterCheckbox from "../filter-checkbox/filter-checkbox";
 
 function SearchForm({ isShortFilm, setIsShortFilm, errors, setErrors, query, setQuery, errorRes }) {
+  const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = (e) => {
     const { value } = e.target;
-    setQuery(value);
+    setSearchValue(value);
     setErrors("");
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!query) {
+    if (!searchValue) {
       setErrors("Введите ключевое слово");
       localStorage.removeItem("searchMovies");
       localStorage.removeItem("query");
     } else {
       setErrors("");
     }
+    setQuery(searchValue);
   }
 
   function handleCheckbox() {
@@ -29,7 +31,7 @@ function SearchForm({ isShortFilm, setIsShortFilm, errors, setErrors, query, set
   return (<div className="search-form">
     <form id="search-movie" className="search-form__container" noValidate onSubmit={handleSubmit}>
       <input type="search" className="search-form__input search-form__input-text" placeholder="Фильм"
-             name="search-movie" maxLength="50" onChange={handleInputChange} value={query}/>
+             name="search-movie" maxLength="50" onChange={handleInputChange} value={searchValue}/>
       <button className="search-form__button search-form__button-text button-effect hover-effect"
               type="submit">Найти
       </button>

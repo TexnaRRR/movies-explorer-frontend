@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./profile.css";
 import { validateEmail, validateName } from "../../utils/validation";
 import ProfileInput from "../profile-input/profile-input";
@@ -18,8 +18,14 @@ function Profile({
                    disabled
                  }) {
   const currentUser = useContext(CurrentUserContext);
+  const [formData, setFormData] = useState(() => {
+    return { name: '', email: '' }
+  });
 
-  const [formData, setFormData] = useState({ name: currentUser.name, email: currentUser.email });
+  useEffect(() => {
+    setFormData({ name: currentUser.name, email: currentUser.email });
+  }, [currentUser]);
+
   const [errors, setErrors] = useState({ name: "", email: "" });
   const [profileEditError, setProfileEditError] = useState("");
 
